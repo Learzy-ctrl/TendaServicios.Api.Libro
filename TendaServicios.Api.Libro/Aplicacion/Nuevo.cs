@@ -11,6 +11,8 @@ namespace TendaServicios.Api.Libro.Aplicacion
         {
             public string Titulo { get; set; }
             public DateTime? FechaPublicacion { get; set; }
+            public double Precio { get; set; }
+            public byte[] Img { get; set; }
             public Guid? AutorLibro { get; set; }
             public int? cuponId { get; set;}
         }
@@ -22,6 +24,8 @@ namespace TendaServicios.Api.Libro.Aplicacion
                 RuleFor(p => p.Titulo).NotEmpty();
                 RuleFor(p => p.FechaPublicacion).NotEmpty();
                 RuleFor(p => p.AutorLibro).NotEmpty();
+                RuleFor(p => p.Precio).NotEmpty();
+                RuleFor(p => p.Img).NotEmpty();
             }
         }
 
@@ -40,6 +44,8 @@ namespace TendaServicios.Api.Libro.Aplicacion
                     Titulo = request.Titulo,
                     FechaPublicacion = request.FechaPublicacion,
                     AutorLibro = request.AutorLibro,
+                    Precio = request.Precio,
+                    Img = request.Img,
                     CuponId = request.cuponId
                 };
                 _contexto.LibreriasMaterial.Add(libro);
