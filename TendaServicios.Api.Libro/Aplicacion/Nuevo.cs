@@ -11,8 +11,9 @@ namespace TendaServicios.Api.Libro.Aplicacion
         {
             public string Titulo { get; set; }
             public DateTime? FechaPublicacion { get; set; }
+            public string Descripcion { get; set; }
             public double Precio { get; set; }
-            public byte[] Img { get; set; }
+            public byte[]? Img { get; set; }
             public Guid? AutorLibro { get; set; }
             public int? cuponId { get; set;}
         }
@@ -25,7 +26,8 @@ namespace TendaServicios.Api.Libro.Aplicacion
                 RuleFor(p => p.FechaPublicacion).NotEmpty();
                 RuleFor(p => p.AutorLibro).NotEmpty();
                 RuleFor(p => p.Precio).NotEmpty();
-                RuleFor(p => p.Img).NotEmpty();
+                //RuleFor(p => p.Img).NotEmpty();
+                RuleFor(p => p.Descripcion).NotEmpty();
             }
         }
 
@@ -46,7 +48,8 @@ namespace TendaServicios.Api.Libro.Aplicacion
                     AutorLibro = request.AutorLibro,
                     Precio = request.Precio,
                     Img = request.Img,
-                    CuponId = request.cuponId
+                    CuponId = request.cuponId,
+                    Descripcion = request.Descripcion
                 };
                 _contexto.LibreriasMaterial.Add(libro);
                 var valor = await _contexto.SaveChangesAsync();
