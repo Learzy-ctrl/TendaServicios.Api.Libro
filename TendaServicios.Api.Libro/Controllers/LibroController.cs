@@ -32,5 +32,11 @@ namespace TendaServicios.Api.Libro.Controllers
         {
             return await _mediator.Send(new ConsultaFiltro.LibroUnico { LibroGuid = Guid.Parse(id) });
         }
+
+        [HttpDelete ("{id}")]
+        public async Task<ActionResult<Unit>> RemoveBook(string _id)
+        {
+            return await _mediator.Send(new Eliminar.Ejecuta { Id = Guid.Parse(_id) });
+        }
     }
 }
